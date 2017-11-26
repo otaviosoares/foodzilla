@@ -4,6 +4,8 @@ import { Row, Col } from 'react-materialize';
 
 import Navbar from './template/Navbar'
 import Home from './home/Home'
+import { ChooseRecipeContainer } from './choose-recipe/ChooseRecipe';
+import { CheckoutContainer } from './checkout/Checkout';
 
 import './App.css';
 
@@ -15,7 +17,8 @@ class App extends Component {
         <Router>
           <Col s={12} className='main-container'>
             <Route exact path="/" component={Home} />
-            {/* <Route path="/detail/:id" component={ContentDetail}/> */}
+            <Route path="/choose" component={ChooseRecipeContainer}/>
+            <Route path="/checkout" component={CheckoutContainer}/>
           </Col>
         </Router>
       </Row>
