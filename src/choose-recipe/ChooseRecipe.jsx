@@ -25,11 +25,12 @@ export default class ChooseRecipe extends Component {
       })
   }
 
-  render() {    
+  render() {
+    const { recipes } = this.props;
     return (
       <div>
         <h3>Choose your recipe:</h3>
-        {this.recipes.map((recipe, index) => (
+        {recipes.map((recipe, index) => (
           <Col s={3} key={recipe.id.toString()}>
             <RecipeListItem recipe={recipe} onSelect={this.onSelectRecipe} />
           </Col>
@@ -41,7 +42,7 @@ export default class ChooseRecipe extends Component {
 
 
 
-const mapStateToProps = state => ({recipes: state.recipes, currentRecipe: state.currentRecipe });
+const mapStateToProps = state => ({recipes: state.recipes.all || [], currentRecipe: state.currentRecipe });
 const mapDispatchToProps = dispatch => bindActionCreators({ selectRecipe }, dispatch);
 
 export const ChooseRecipeContainer = connect(mapStateToProps, mapDispatchToProps)(ChooseRecipe);

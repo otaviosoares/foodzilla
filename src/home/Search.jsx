@@ -14,7 +14,7 @@ export default class Search extends Component {
     this.props.searchForRecipes(this.refs.terms.state.value)
     .then(() => {
       if (this.props.recipes.length) {
-        return this.props.history.push('/choose');
+        return this.props.onSearch();
       }
       this.setState({
         errors: "Your search haven't returned any result."
