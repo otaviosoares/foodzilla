@@ -9,7 +9,6 @@ import RecipeListItem from '../recipe-list/RecipeListItem'
 export default class ChooseRecipe extends Component {
   constructor() {
     super()
-    this.onSelectRecipe = this.onSelectRecipe.bind(this);
   }
 
   componentWillMount() {
@@ -18,8 +17,9 @@ export default class ChooseRecipe extends Component {
     }
   }
 
-  onSelectRecipe(recipeId) {
-    this.props.selectRecipe(recipeId)
+  onSelectRecipe(recipe) {
+    console.log(arguments)
+    this.props.selectRecipe(recipe.id)
       .then(() => {
         return this.props.history.push('/checkout');
       })
@@ -32,7 +32,7 @@ export default class ChooseRecipe extends Component {
         <h3>Choose your recipe:</h3>
         {recipes.map((recipe, index) => (
           <Col s={3} key={recipe.id.toString()}>
-            <RecipeListItem recipe={recipe} onSelect={this.onSelectRecipe} />
+            <RecipeListItem recipe={recipe} onSelect={this.onSelectRecipe.bind(this, recipe)} />
           </Col>
         ))}
       </div>
